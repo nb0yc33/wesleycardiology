@@ -46,29 +46,29 @@ class Main_model extends CI_Model
 
     function getAllCatheters()
     {
-     $this->db->select('Description');
-     $this->db->from('CodeValues');
-     $this->db->like('Display', 'Catheter');
-     $query = $this->db->get();    
-     return $query->result();
+          $this->db->select('Description');
+          $this->db->from('CodeValues');
+          $this->db->like('Display', 'Catheter');
+          $query = $this->db->get();    
+          return $query->result();
     }    
 
     function getAllBalloons()
     {
-     $this->db->select('Description');
-     $this->db->from('CodeValues');
-     $this->db->like('Display', 'Balloon');
-     $query = $this->db->get();    
-     return $query->result();
+          $this->db->select('Description');
+          $this->db->from('CodeValues');
+          $this->db->like('Display', 'Balloon');
+          $query = $this->db->get();    
+          return $query->result();
     }        
 
     function getAllStents()
     {
-     $this->db->select('Description');
-     $this->db->from('CodeValues');
-     $this->db->like('Display', 'Stent');
-     $query = $this->db->get();    
-     return $query->result();
+          $this->db->select('Description');
+          $this->db->from('CodeValues');
+          $this->db->like('Display', 'Stent');
+          $query = $this->db->get();    
+          return $query->result();
     }    
 
 

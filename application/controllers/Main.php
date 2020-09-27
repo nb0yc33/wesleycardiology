@@ -52,8 +52,6 @@ class Main extends CI_Controller {
                $this->load->view("select", $data);
                $this->main_model->insert_study_r($data);
           }
-
-
      }
 
      public function select()
@@ -62,8 +60,15 @@ class Main extends CI_Controller {
           $this->load->model("main_model");  
           $data["patient_data"] = $this->main_model->fetch_patient($patientID);  
           $data["fetch_data"] = $this->main_model->fetch_data();  
+
+          //retrieve catheters, balloons and stents for dropdown menus
+          $data['groupC'] = $this->main_model->getAllCatheters();
+          $data['groupB'] = $this->main_model->getAllBalloons();
+          $data['groupS'] = $this->main_model->getAllStents();
           $this->load->view("select", $data);
 
+
+          //ensure mandatory fields are filled
           $this->load->library('form_validation');  
           $this->form_validation->set_rules("Height", "Height", 'required');         
           $this->form_validation->set_rules("Weight", "Weight", 'required');  
@@ -76,10 +81,7 @@ class Main extends CI_Controller {
 
                if($this->input->post("Add"))
                {
-                    $data['groupC'] = $this->main_model->getAllCatheters();
-                    $data['groupB'] = $this->main_model->getAllBalloons();
-                    $data['groupS'] = $this->main_model->getAllStents();
-
+                    //store checkbox responses as bit(0 or 1) for DB
                     if($this->input->post("ca") == "1"){
                          $ca = 1;
                     } else {
@@ -382,7 +384,6 @@ class Main extends CI_Controller {
                     } else {
                          $pericardiocentesis = 0;
                     }
-
                     
                     if($this->input->post("insert_vasc") == "1"){
                          $insertvascclosure = 1;
@@ -432,6 +433,13 @@ class Main extends CI_Controller {
                          $singleshots = 0;
                     }
 
+                    if($this->input->post("srdl") == "1"){
+                         $srdl = 1;
+                    } else {
+                         $srdl = 0;
+                    }
+                    
+                    //retrieve input as an array for DB entry
                     $data = array(
                          "PatientID"=> $patientID,
                          "Graft" => $this->input->post("Graft"),
@@ -521,14 +529,14 @@ class Main extends CI_Controller {
                          "PrimaryOperator" =>$this->input->post("PrimaryOperator"),
                          "Radiographer" =>$this->input->post("Radiographer"),
                          "DAP" => $this->input->post("dap"),
-                         "SRDL" => $this->input->post("srdl"),
+                         "SRDL" => $srdl,
                          "AirKerma" => $this->input->post("ca_kerma"),
                          "FluoroTime" => $this->input->post("fluoro_time"),
-                         "Cardiac_0" => $this->input->post("cardiac_3.75"),
-                         "Cardiac_1" => $this->input->post("cardiac_7.5"),
+                         "Cardiac_0" => $this->input->post("cardiac_3"),
+                         "Cardiac_1" => $this->input->post("cardiac_7"),
                          "Cardiac_2" => $this->input->post("cardiac_15"),
                          "Cardiac_3" => $this->input->post("cardiac_25_30"),
-                         "Vascular_1" => $this->input->post("vasc_0.5_2"),
+                         "Vascular_1" => $this->input->post("vasc_2"),
                          "Vascular_2" => $this->input->post("vasc_3_6"),
                          "Rotational_1" => $this->input->post("rotate_3"),
                          "Rotational_2" => $this->input->post("rotate_stent"),
@@ -536,7 +544,7 @@ class Main extends CI_Controller {
                          "Acquisition" => $this->input->post("acquisition"),
                          "FluoroFlavour" => $this->input->post("fluoro_flavour"),
                          "Contrast" => $this->input->post("contrast_type_qty"),
-                         "Catheter_1" => $this->input->post("catheter_1"),
+                         "Catheter_1" => $_POST["catheter_1"],
                          "Catheter_2" => $this->input->post("catheter_2"),
                          "Balloon_1" => $this->input->post("balloon_1"),
                          "Balloon_2" => $this->input->post("balloon_2"),

@@ -659,18 +659,18 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <label>Patient height (m) <input type="float" id="height" name="Height"/></label>
+                                    <label>Patient height (m) <br><input type="float" id="height" name="Height"/></label>
                                 </td>
                                 <td>
-                                    <label>Patient weight (kgs) <input type="float" id="weight" name="Weight"/></label>
+                                    <label>Patient weight (kgs) <br><input type="float" id="weight" name="Weight"/></label>
                                 </td>                                
                             </tr>  
                             <tr>
                                 <td>
-                                    <label>Patient BMI <br> <input type="float" id="bmi" name="bmi"/></label>
+                                    <label>Patient BMI <br><input type="float" id="bmi" name="bmi"/></label>
                                 </td>
                                 <td>
-                                    <label>Procedure date <br> <input type="date" id="procedure_date" name="StudyDate"/></label>
+                                    <label>Procedure date <br><input type="date" id="procedure_date" name="StudyDate"/></label>
                                 </td>                                
                             </tr>     
                             <tr>
@@ -684,12 +684,18 @@
                             </tr>   
                             <tr>
                                 <td>
-                                    <label>Primary operator <input type="text" id="primary_operator" name="PrimaryOperator"/></label>
+                                    <label>Primary operator <br><input type="text" id="primary_operator" name="PrimaryOperator"/></label>
                                 </td>
                                 <td>
-                                    
                                 </td>
-                            </tr>     <label>Radiographer <br> <input type="text" id="radiographer" name="Radiographer"/></label>                                                                                                                                                                                                                                                            
+                            </tr>    
+                            <tr>
+                                <td>
+                                    <label>Radiographer <br><input type="text" id="radiographer" name="Radiographer"/></label>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>                                                                                                                                                                                                                                                             
                         </tbody>
                     </table>                   
                 </div>  
@@ -705,10 +711,11 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <label>DAP (Gy cm<sup>2</sup>) <br><input type="number" id="dap" name="dap"/></label>
+                                    <label>DAP (Gy cm<sup>2</sup>) <br><input type="float" id="dap" name="dap"/></label>
                                 </td>
                                 <td>
-                                    <label> SRDL <br><input type="number" id="srdl" name="srdl"/></label>
+                                    <input type="hidden" name="srdl" value="0" />
+                                    <label> > SRDL <br><input type="checkbox" id="srdl" name="srdl" value="1"/></label>
                                 </td>                                                                
                             </tr>              
                             <tr>
@@ -716,7 +723,7 @@
                                     <label>CumulativeAir Kerma (mGy) <input type="float" id="ca_kerma" name="ca_kerma"/></label>
                                 </td>                            
                                 <td>
-                                    <label>Fluoro time (mm:ss) <input type="float" id="fluoro_time" name="fluoro_time"/></label>
+                                    <label>Fluoro time (mm.ss) <input type="float" id="fluoro_time" name="fluoro_time"/></label>
                                 </td>
 
                             </tr>                                                                                                                                                                                                                                                     
@@ -737,10 +744,10 @@
                             <tr>
                                 <th scope="row">Cardiac</th>
                                 <td>
-                                    <label><input type="number" id="cardiac_3.75" name="cardiac_3.75"/><br> 3.75 fps</label>
+                                    <label><input type="number" id="cardiac_3" name="cardiac_3"/><br> 3.75 fps</label>
                                 </td>
                                 <td>
-                                    <label><input type="number" id="cardiac_7.5" name="cardiac_7.5"/><br> 7.5 fps</label>
+                                    <label><input type="number" id="cardiac_7" name="cardiac_7"/><br> 7.5 fps</label>
                                 </td>                          
                             </tr>
                             <tr>
@@ -755,7 +762,7 @@
                             <tr>
                                 <th scope="row">Vascular</th>
                                 <td>
-                                    <label><input type="number" id="vasc_0.5_2" name="vasc_0.5_2"/><br> 0.5-2fps</label>
+                                    <label><input type="number" id="vasc_2" name="vasc_2"/><br> 0.5-2fps</label>
                                 </td>
                                 <td>
                                     <label><input type="number" id="vasc_3_6" name="vasc_3_6"/><br> 3-6 fps</label>
@@ -831,21 +838,21 @@
                             <tr>
                                 <th scope="row">Catheters</th>
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="catheter_1" id="catheter_1">
                                         <?php 
                                             foreach($groupC as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="catheter_1" name="catheter_1">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select>                                    
                                 </td>
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="catheter_2" id="catheter_2">
                                         <?php 
                                             foreach($groupC as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="catheter_2" name="catheter_2">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select>                                
@@ -854,21 +861,21 @@
                             <tr>
                                 <th scope="row">Balloons</th>
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="balloon_1" id="balloon_1">
                                         <?php 
                                             foreach($groupB as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="balloon_1" name="balloon_1">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select>                                     
                                 </td>  
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="balloon_2" id="balloon_2">
                                         <?php 
                                             foreach($groupB as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="balloon_2" name="balloon_2">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select> 
@@ -877,21 +884,21 @@
                             <tr>
                                 <th scope="row">Stents</th>
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="stent_1" id="stent_1">
                                         <?php 
                                             foreach($groupS as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="stent_1" name="stent_1">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select>                                    
                                 </td>   
                                 <td>
-                                    <select class="form-control">
+                                    <select class="form-control" name="stent_2" id="stent_2">
                                         <?php 
                                             foreach($groupS as $row)
                                             { 
-                                                echo '<option value="'.$row->Description.'" id="stent_2" name="stent_2">'.$row->Description.'</option>';
+                                                echo '<option value="'.$row->Description.'">'.$row->Description.'</option>';
                                             }
                                         ?>
                                     </select>                                  
