@@ -440,11 +440,31 @@ class Main extends CI_Controller {
                     } else {
                          $srdl = 0;
                     }
+
+                    if($this->input->post("non-pedicled_graft") == "1"){
+                         $nonpedicledgraft = 1;
+                    } else {
+                         $nonpedicledgraft = 0;
+                    }
+
+                    if($this->input->post("pedicled_RIMA") == "1"){
+                         $pedicledrima = 1;
+                    } else {
+                         $pedicledrima = 0;
+                    }
+
+                    if($this->input->post("pedicled_LIMA") == "1"){
+                         $pedicledlima = 1;
+                    } else {
+                         $pedicledlima = 0;
+                    }
                     
                     //retrieve input as an array for DB entry
                     $data = array(
                          "PatientID"=> $patientID,
-                         "Graft" => $this->input->post("Graft"),
+                         "NonPedicledGraft" => $nonpedicledgraft,
+                         "PedicledRIMA" => $pedicledrima,
+                         "PedicledLIMA" => $pedicledlima,
                          "CA"=> $ca,
                          "LV_Gram" => $this->input->post("lv_gram"),
                          "LeftHeartStudy" => $lhp,
