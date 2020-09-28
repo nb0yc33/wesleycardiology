@@ -59,21 +59,16 @@ class Search extends CI_Controller {
 	function fetchStudy()
 	{
 		$output = '';
-		$query = '';
 		$this->load->model('ajaxsearch_model');
-		if($this->input->post('query'))
-		{
-			$query = $this->input->post('query');
-		}
-		$data = $this->ajaxsearch_model->fetch_study($query);
+		$patientID = $this->uri->segment(3);  
+		$data = $this->ajaxsearch_model->fetch_study($patientID);
 		$output .= '
 		<div class="table">
 					<table class="table table-bordered">
 						<tr>
 							<th>Date</th>
 							<th>Operator</th>
-							<th>Radiographer</th>
-							<th>DAP</th>
+							<th>Type of Study</th>
 						</tr> 
 		';
 		if($data->num_rows() > 0)
@@ -84,8 +79,7 @@ class Search extends CI_Controller {
 						<tr>
 							<td>'.$row->StudyDate.'</td>
 							<td>'.$row->PrimaryOperator.'</td>
-							<td>'.$row->Radiographer.'</td>
-							<td>'.$row->DAP.'</td>
+							<td>'.$row->StudyType.'</td>
 						</tr>
 				';
 			}

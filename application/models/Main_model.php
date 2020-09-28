@@ -44,6 +44,13 @@ class Main_model extends CI_Model
          redirect(base_url() . "main/updated"); 
     }
 
+    function delete_patient($data, $id)
+    {
+         $this->db->where("PatientID", $id);
+         $this->db->delete("Patients", $data);
+         redirect(base_url(). "main/updated");
+    }
+
     function getAllCatheters()
     {
           $this->db->select('Description');

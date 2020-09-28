@@ -37,10 +37,11 @@ class Main extends CI_Controller {
                    $this->main_model->update_patient($data, $this->input->post("hidden_id"));  
                    
               } 
-
-         }  else {
-             $this->index();
-         } 
+              else if($this->input->post("Delete"))
+              {
+                   $this->main_model->delete_patient($data, $this->input->post("hidden_id2"));
+              } 
+          }
      }  
 
      public function study(){
@@ -75,6 +76,7 @@ class Main extends CI_Controller {
           $this->form_validation->set_rules("StudyDate", "Study Date", 'required');  
           $this->form_validation->set_rules("PrimaryOperator", "Primary Operator", 'required');
           $this->form_validation->set_rules("Radiographer", "Radiographer", 'required');
+          $this->form_validation->set_rules("StudyType", "Study Type", 'required');
  
           if($this->form_validation->run())  
           {            
@@ -528,6 +530,7 @@ class Main extends CI_Controller {
                          "CCT" => $this->input->post("cct"),
                          "PrimaryOperator" =>$this->input->post("PrimaryOperator"),
                          "Radiographer" =>$this->input->post("Radiographer"),
+                         "StudyType" =>$this->input->post("StudyType"),
                          "DAP" => $this->input->post("dap"),
                          "SRDL" => $srdl,
                          "AirKerma" => $this->input->post("ca_kerma"),

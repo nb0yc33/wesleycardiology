@@ -83,6 +83,12 @@
     #addContainer {
         padding-top: 1.5em;
     }
+
+    .button-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 	</style>
 
 		<nav class="navbar navbar-inverse">
@@ -142,18 +148,23 @@
                     </div>
 
                     <div class="form-group">
-							<label for="Gender">Gender:</label>
-					    	<select id="Gender" name="Gender" size="3">
-  								<option value="Male">Male</option>
- 						    	<option value="Female">Female</option>
-                            	<option value="Other">Other</option>
-                        	</select>	
+						<label>Gender</label>
+					    	<input type="text" id="Gender" value="<?php echo $row->Gender ?>" name="Gender" class="form-control" />
+                            <span class="text-danger"><?php echo form_error("Gender"); ?></span> 
+	
 					</div>
            
-                    <div class="form-group">  
-                        <input type="hidden" name="hidden_id" value="<?php echo $row->PatientID; ?>" />  
-                        <input type="submit" name="Update" value="Update" class="btn btn-info" />  
-                    </div>       
+                    <div class="button-box">
+                        <div class="form-group">  
+                            <input type="hidden" name="hidden_id" value="<?php echo $row->PatientID; ?>" />  
+                            <input type="submit" name="Update" value="Update" class="btn btn-info" />
+                        </div>      
+
+                        <div class="form-group">  
+                            <input type="hidden" name="hidden_id2" value="<?php echo $row->PatientID; ?>" />  
+                            <input type="submit" name="Delete" value="Delete" class="btn btn-info" />
+                        </div>   
+                    </div>     
            <?php       
                 }  
             } 
@@ -687,6 +698,7 @@
                                     <label>Primary operator <br><input type="text" id="primary_operator" name="PrimaryOperator"/></label>
                                 </td>
                                 <td>
+                                    <label>Study Type <br><input type="text" id="study_type" name="StudyType"/></label>
                                 </td>
                             </tr>    
                             <tr>
