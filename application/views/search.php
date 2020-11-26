@@ -133,7 +133,7 @@ $(document).ready(function(){
 	function load_data(query)
 	{
 		$.ajax({
-			url:"<?php echo base_url(); ?>search/fetch",
+			url:"<?php echo base_url(); ?>main/fetchPatient",
 			method:"POST",
 			data:{query:query},
 			success:function(data){

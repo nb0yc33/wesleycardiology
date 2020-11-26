@@ -115,6 +115,7 @@
 	<body>
         <div class="container">
             <div id="container1">
+            <!-- Update patient details -->
             <h4 align="left">Update Patient</h4>
                 <?php echo validation_errors(); ?> 
                 <form method="post" action="<?php echo base_url()?>main/form_validation">
@@ -179,6 +180,7 @@
                 </form>
             </div>
             <div id="container2">
+                <!-- Display table of existing studies for corresponding patient -->
                 <h4 align="left">Existing Studies</h4>
                 <br />
                 <div id="result"></div>
@@ -197,6 +199,8 @@
                     <div class="content">
                         <?php echo validation_errors(); ?> 
                         <form method="post" action="<?php echo base_url()?>main/r/<?php echo $patient;?>">
+                            <?php $id = $this->uri->segment(3); ?>
+                            <!-- Coronary diagnostic details tab -->
                             <button type="button" class="collapsible">Coronary Diagnostic</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -303,6 +307,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Interventional cardiology tab -->
                             <button type="button" class="collapsible">Interventional Cardiology</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -350,6 +355,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Structural details tab -->
                             <button type="button" class="collapsible">Structural</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -404,6 +410,7 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <!-- Other cardiac procedures tab -->
                             <button type="button" class="collapsible">Other Cardiac Procedures</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -431,6 +438,7 @@
                                     </tbody>
                                 </table>                   
                             </div>  
+                            <!-- Electrophysiology procedure tab -->
                             <button type="button" class="collapsible">Electrophysiology</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -480,7 +488,8 @@
                                         </tr>                                                     
                                     </tbody>
                                 </table>
-                            </div>                    
+                            </div>  
+                            <!-- Pacing tab -->                  
                             <button type="button" class="collapsible">Pacing</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -560,6 +569,7 @@
                                     </tbody>
                                 </table>                   
                             </div>         
+                            <!-- Non-cardiac details tab -->
                             <button type="button" class="collapsible">Non-Cardiac Procedures</button>     
                             <div class="content">
                                 <table class="table table-borderless">
@@ -674,7 +684,8 @@
                                         </tr>                                                                                                                                                                                                               
                                     </tbody>
                                 </table>                    
-                            </div>                        
+                            </div>
+                            <!-- Study details tab -->                        
                             <button type="button" class="collapsible">Study Details</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -728,6 +739,7 @@
                                     </tbody>
                                 </table>                   
                             </div>  
+                            <!-- Radiation tab -->
                             <button type="button" class="collapsible">Radiation</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -757,7 +769,8 @@
                                         </tr>                                                                                                                                                                                                                                                     
                                     </tbody>
                                 </table>                 
-                            </div>                           
+                            </div>    
+                            <!-- X-ray application tab -->                       
                             <button type="button" class="collapsible">X-Ray Application</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -832,7 +845,8 @@
                                         </tr>                                                                                                                                                                                                                                                                                                                                             
                                     </tbody>
                                 </table>                
-                            </div>            
+                            </div>          
+                            <!-- Contrast details tab -->  
                             <button type="button" class="collapsible">Contrast</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -852,6 +866,7 @@
                                     </tbody>
                                 </table>                
                             </div>     
+                            <!-- Equipment details tab -->
                             <button type="button" class="collapsible">Equipment</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -935,6 +950,7 @@
                                     </tbody>
                                 </table>                   
                             </div> 
+                            <!-- Access route tab -->
                             <button type="button" class="collapsible">Access Route</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -979,13 +995,13 @@
                                         </tr>
                                     </tbody>
                                 </table>                
-                            </div>     
-                        </form>   
-                    </div>
-                    <div class="form-group">  
-                        <div id="addContainer">
-                            <input type="submit" name="AddRadiographer" value="Add Radiographer Entry" id="AddRadiographer" class="btn btn-info" />  
-                        </div>
+                            </div>                              
+                            <div class="form-group">  
+                                <div id="addContainer">
+                                    <input type="submit" name="AddRadiographer" value="Add Radiographer Entry" id="AddRadiographer" class="btn btn-info" />  
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 <button type="button" class="collapsible" id="role-header">VMP Entry <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-down-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
@@ -993,6 +1009,7 @@
                 </svg></button>
                     <div class="content"> 
                         <form method="post" action="<?php echo base_url()?>main/vmp/<?php echo $patient;?>">
+                        <!-- VMP risk and previous interventions tab -->
                         <button type="button" class="collapsible">Risk Factors and Previous Interventions</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1048,6 +1065,7 @@
                                     </tbody>
                                 </table>                          
                             </div> 
+                            <!-- VMP pre-procedural renal status tab -->
                             <button type="button" class="collapsible">Pre-Procedural Renal Status</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1064,6 +1082,7 @@
                                     </tbody>
                                 </table>                          
                             </div>   
+                            <!-- VMP LV function tab -->
                             <button type="button" class="collapsible">LV Function</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1120,6 +1139,7 @@
                                     </tbody>
                                 </table>                          
                             </div>
+                            <!-- VMP clinical presentation tab -->
                             <button type="button" class="collapsible">Clinical Presentation</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1148,6 +1168,7 @@
                                     </tbody>
                                 </table>                          
                             </div> 
+                            <!-- VMP PCI indication tab -->
                             <button type="button" class="collapsible">PCI Indication</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1173,6 +1194,7 @@
                                     </tbody>
                                 </table>                          
                             </div> 
+                            <!-- VMP clinical symptoms tab -->
                             <button type="button" class="collapsible">Clinical Symptoms</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1238,6 +1260,7 @@
                                     </tbody>
                                 </table>                          
                             </div> 
+                            <!-- VMP mechanical/ventilation support tab -->
                             <button type="button" class="collapsible">Mechanical/Ventilation Support</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1259,6 +1282,7 @@
                                     </tbody>
                                 </table>                          
                             </div>
+                            <!-- VMP interventional details tab -->
                             <button type="button" class="collapsible">Intervention Details</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1347,6 +1371,7 @@
                                     </tbody>
                                 </table>                          
                             </div>
+                            <!-- VMP in-lab complications tab -->
                             <button type="button" class="collapsible">In-Lab Complications</button>
                             <div class="content">
                                 <table class="table table-borderless">
@@ -1406,14 +1431,14 @@
                                             </td>
                                     </tbody>
                                 </table>                          
+                            </div>                                                        
+                            <div class="form-group">  
+                                <div id="addContainer">
+                                    <input type="submit" name="AddVMP" value="Add VMP Entry" id="AddVMP" class="btn btn-info" />  
+                                </div>
                             </div>
-                        </form>       
-                    </div>                                                    
-                    <div class="form-group">  
-                        <div id="addContainer">
-                            <input type="submit" name="AddVMP" value="Add VMP Entry" id="AddVMP" class="btn btn-info" />  
-                        </div>
-                    </div>
+                        </form>
+                    </div>   
             </div>
         </div>
 	</body>
@@ -1460,7 +1485,7 @@ $(document).ready(function(){
 	function load_data(query)
 	{
 		$.ajax({
-			url:"<?php echo base_url(); ?>search/fetchStudy",
+			url:"<?php echo base_url(); ?>main/fetchStudy/<?php echo $id; ?>",
 			method:"POST",
 			data:{query:query},
 			success:function(data){

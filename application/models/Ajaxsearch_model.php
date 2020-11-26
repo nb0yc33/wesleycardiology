@@ -19,11 +19,9 @@ class Ajaxsearch_model extends CI_Model
 
 	function fetch_study($id)
 	{
-		$this->db->select("*");
-		$this->db->from("StudyR");
-		$this->db->where('PatientID', $id);
-		$this->db->order_by('StudyID', 'DESC');
-		return $this->db->get();
+		$query = $this->db->query("SELECT * FROM StudyR WHERE PatientID LIKE '$id'");
+		return $query;
+
 	}
 
 }
